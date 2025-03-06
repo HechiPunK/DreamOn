@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Interpretación de Sueños{% endblock %}</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#845ec2',
+                        secondary: '#4b4453',
+                        accent: '#b0a8b9',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Semantic UI -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+</head>
+<body class="bg-secondary text-white flex flex-col min-h-screen m-0">
+    {% include 'header.html' %}
+
+    <div class="container mx-auto flex-grow">
+        {% block content %}{% endblock %}
+    </div>
+
+    {% include 'footer.html' %}
+</body>
+    <!-- Semantic UI JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+</html>

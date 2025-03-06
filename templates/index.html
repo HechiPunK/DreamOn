@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Inicio{% endblock %}
+{% block content %}
+<div class="text-center">
+    <h1 class="text-3xl font-bold">Bienvenido a la Interpretación de Sueños</h1>
+    <p class="text-lg">Escribe palabras clave para encontrar su significado.</p>
+    <form action="{{ url_for('buscar') }}" method="GET" class="flex justify-center mt-4">
+        <div class="relative w-80">
+            <input type="text" name="q" 
+                class="w-full p-3 pr-12 rounded-full border-2 border-accent bg-white text-black focus:outline-none"
+                placeholder="Escribe aquí...">
+            <button type="submit" 
+                class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-primary text-white rounded-full p-2">
+                <i class="search icon"></i>
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}

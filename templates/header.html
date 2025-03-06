@@ -1,0 +1,15 @@
+<nav class="ui inverted menu bg-primary">
+    <div class="ui container">
+        <a href="{{ url_for('index') }}" class="header item">Interpretación de Sueños</a>
+        <div class="right menu">
+            <a href="{{ url_for('index') }}" class="item">Inicio</a>
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('dashboard') }}" class="item">Dashboard</a>
+                <a href="{{ url_for('logout') }}" class="item">Cerrar sesión</a>
+            {% else %}
+                <a href="{{ url_for('ruta_login') }}" class="item">Iniciar sesión</a>
+                <a href="{{ url_for('ruta_newaccount') }}" class="item">Registrarse</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>

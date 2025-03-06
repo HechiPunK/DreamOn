@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+    <div class="container">
+        <h2 class="text-center">Panel de Usuario</h2>
+        <p>Aquí puedes agregar nuevas palabras clave y significados.</p>
+        <form method="POST" action="{{ url_for('agregar_palabra') }}">
+            <div class="mb-3">
+                <label class="form-label">Palabra Clave</label>
+                <input type="text" name="palabra" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Significado</label>
+                <textarea name="significado" class="form-control" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Agregar</button>
+        </form>
+    </div>
+{% endblock %}
