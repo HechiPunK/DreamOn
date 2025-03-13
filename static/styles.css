@@ -1,0 +1,156 @@
+/* Colores de la paleta */
+:root {
+    --color-red-dark: #d90429; 
+    --color-red: #ef233c; 
+    --color-light: #edf2f4; 
+    --color-gray: #8d99ae; 
+    --color-dark: #2b2d42; 
+}
+
+/* Estilos generales */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--color-light);
+    color: var(--color-dark);
+    font-family: Arial, sans-serif;
+}
+
+.ui.container {
+    flex: 1;
+    padding: 20px;
+}
+
+/* Header */
+.ui.menu {
+    background-color: var(--color-dark) !important;
+    border-radius: 0 !important;
+}
+
+.ui.menu .item {
+    color: var(--color-light) !important;
+}
+
+.ui.menu .item:hover {
+    background-color: var(--color-gray) !important;
+}
+
+.ui.menu .active.item {
+    background-color: var(--color-red) !important;
+    color: var(--color-light) !important;
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+    background-color: var(--color-dark) !important;
+    color: var(--color-light) !important;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Botones */
+.ui.button {
+    background-color: var(--color-red) !important;
+    color: var(--color-light) !important;
+}
+
+.ui.button:hover {
+    background-color: var(--color-red-dark) !important;
+    color: var(--color-light) !important;
+}
+
+.ui.buttons .button.active {
+    background-color: var(--color-red-dark) !important;
+    color: var(--color-light) !important;
+}
+
+.modern-btn {
+    background-color: var(--color-gray) !important;
+    color: var(--color-light) !important;
+}
+
+.modern-btn:hover {
+    background-color: var(--color-dark) !important;
+    color: var(--color-light) !important;
+}
+
+/* Tarjetas y sombras */
+.ui.card {
+    background-color: var(--color-light) !important;
+    border: 1px solid var(--color-gray) !important;
+}
+
+.shadow-effect {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Inputs */
+.ui.input input {
+    background-color: var(--color-light) !important;
+    border: 1px solid var(--color-gray) !important;
+    color: var(--color-dark) !important;
+}
+
+.ui.input input:focus {
+    border-color: var(--color-red) !important;
+}
+
+/* Dropdown */
+.ui.dropdown .menu {
+    background-color: var(--color-light) !important;
+    border: 1px solid var(--color-gray) !important;
+}
+
+.ui.dropdown .menu .item {
+    color: var(--color-dark) !important;
+}
+
+.ui.dropdown .menu .item:hover {
+    background-color: var(--color-gray) !important;
+}
+
+/* Estilos para el foro */
+#publicarForm textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+#listaPublicaciones .item {
+    padding: 15px;
+    border-bottom: 1px solid var(--color-gray);
+}
+
+#listaPublicaciones .item:last-child {
+    border-bottom: none;
+}
+
+.nombreUsuario {
+    color: var(--color-red);
+    font-weight: bold;
+}
+
+.ui.mini.button {
+    margin-right: 5px;
+}
+
+/* Estilos para el modal */
+.ui.modal {
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.ui.modal .header {
+    background-color: var(--color-dark-blue);
+    color: var(--color-dark);
+    border-radius: 10px 10px 0 0;
+}
+
+.ui.modal .actions {
+    background-color: var(--color-light);
+    border-radius: 0 0 10px 10px;
+}
+

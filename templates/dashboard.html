@@ -1,19 +1,114 @@
-{% extends 'base.html' %}
-{% block title %}Dashboard{% endblock %}
+{% extends "base.html" %}
+
 {% block content %}
-    <div class="container">
-        <h2 class="text-center">Panel de Usuario</h2>
-        <p>Aquí puedes agregar nuevas palabras clave y significados.</p>
-        <form method="POST" action="{{ url_for('agregar_palabra') }}">
-            <div class="mb-3">
-                <label class="form-label">Palabra Clave</label>
-                <input type="text" name="palabra" class="form-control" required>
+<div class="ui container">
+    <div class="ui buttons" style="margin-bottom: 20px;">
+        <button class="ui primary button" id="abrir-modal-agregar">
+            <i class="plus icon"></i> Agregar
+        </button>
+        <button class="ui button" id="abrir-modal-mis-significados">
+            <i class="list icon"></i> Mis significados
+        </button>
+    </div>
+    <div class="ui segment" style="margin-top: 20px;">
+        <h2 class="ui header">Mis Publicaciones</h2>
+        <div class="ui divided items" id="listaPublicaciones">
+            {% for publication in publications %}
+                <div class="item">
+                    <div class="content">
+                        <div class="header">{{ publication.content }}</div>
+                        <div class="meta">
+                            <span class="date">{{ publication.date }}</span>
+                        </div>
+                        <div class="extra">
+                            <button class="ui mini button editar-publicacion" data-id="{{ publication.id }}" data-content="{{ publication.content }}">
+                                <i class="edit icon"></i> Editar
+                            </button>
+                            <button class="ui mini red button eliminar-publicacion" data-id="{{ publication.id }}">
+                                <i class="trash icon"></i> Eliminar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- Modal de edición publicacion-->
+<div class="ui modal" id="modal-editar">
+    <div class="header">Editar Publicación</div>
+    <div class="content">
+        <form class="ui form" id="form-editar" method="POST">
+            <div class="field">
+                <textarea id="contenido-editar" name="contenido" rows="3" required></textarea>
             </div>
-            <div class="mb-3">
-                <label class="form-label">Significado</label>
-                <textarea name="significado" class="form-control" rows="3" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary w-100">Agregar</button>
         </form>
     </div>
+    <div class="actions">
+        <button type="button" class="ui button cancel">Cancelar</button>
+        <button type="submit" form="form-editar" class="ui primary button">Guardar cambios</button>
+    </div>
+</div>
+
+<!-- Modal de confirmación publicacion-->
+<div class="ui mini modal" id="modal-confirmar-eliminar">
+    <div class="header">Confirmar eliminación</div>
+    <div class="content">
+        <p>¿Estás seguro de que deseas eliminar esta publicación?</p>
+    </div>
+    <div class="actions">
+        <div class="ui cancel button">Cancelar</div>
+        <a class="ui red button" id="confirmar-eliminar">Eliminar</a>
+    </div>
+</div>
+
+<!-- Modal para agregar significados -->
+<div class="ui modal" id="modal-agregar">
+    <div class="header">Agregar Significado</div>
+    <div class="content">
+        <form class="ui form" id="form-agregar" method="POST" action="{{ url_for('agregar_significado') }}">
+            <div class="field">
+                <label>Palabra clave</label>
+                <input type="text" name="palabra" placeholder="Escribe una palabra clave" required>
+            </div>
+            <div class="field">
+                <label>Significado Jungian</label>
+                <textarea name="significado_jungian" rows="3" placeholder="Escribe el significado Jungian" required></textarea>
+            </div>
+            <div class="field">
+                <label>Significado Moderno</label>
+                <textarea name="significado_moderno" rows="3" placeholder="Escribe el significado Moderno" required></textarea>
+            </div>
+        </form>
+    </div>
+    <div class="actions">
+        <button type="button" class="ui button cancel">Cancelar</button>
+        <button type="submit" form="form-agregar" class="ui primary button">Guardar</button>
+    </div>
+</div>
+
+<!-- Modal para ver mis significados -->
+<div class="ui modal" id="modal-mis-significados">
+    <div class="header">Mis Significados</div>
+    <div class="content">
+        <div class="ui divided items">
+            {% for WordKey in mis_significados %}
+            <div class="item">
+                <div class="content">
+                    <div class="header">{{ WordKey.keyword }}</div>
+                    <div class="description">
+                        <p><strong>Jungian:</strong> {{ WordKey.jungian_date }}</p>
+                        <p><strong>Moderno:</strong> {{ WordKey.modern_date }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="actions">
+        <button type="button" class="ui button cancel">Cerrar</button>
+    </div>
+</div>
 {% endblock %}
+

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="ui container">
+    <!-- Área para escribir y publicar -->
+    <div class="ui card" style="width: 100%; margin-top: 20px;">
+        <div class="content">
+            <div class="header">Publicar en el foro</div>
+            <form class="ui form" method="POST" action="{{ url_for('publicar') }}">
+                <div class="field">
+                    <textarea name="contenido" rows="3" placeholder="Escribe algo..." required></textarea>
+                </div>
+                <button type="submit" class="ui primary button">Publicar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Lista de publicaciones -->
+    <div class="ui segment" style="margin-top: 20px;">
+        <h3 class="ui header">Publicaciones recientes</h3>
+        <div class="ui divided items" id="listaPublicaciones">
+            {% for publication in publications %}
+            <div class="item">
+                <div class="content">
+                    <div class="header">Usuario: 
+                        <span class="nombreUsuario">
+                            {{ publication.username if publication.username else "Anónimo" }}
+                        </span>
+                    </div>
+                    <div class="description">
+                        <p>{{ publication.content }}</p>
+                    </div>
+                    <div class="meta">
+                        <span class="date">{{ publication.date }}</span>
+                    </div>
+                    <div class="extra">
+                        <button class="ui mini button">
+                            <i class="thumbs up icon"></i> Like
+                        </button>
+                        <button class="ui mini button">
+                            <i class="comment icon"></i> Comentar
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
