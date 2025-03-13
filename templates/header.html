@@ -1,0 +1,44 @@
+<nav class="ui large menu">
+    <div class="ui container">
+        <a href="{{ url_for('index') }}" class="{% if request.endpoint == 'index' %}active{% endif %} item">
+            <i class="home icon"></i> Inicio
+        </a>
+        <a href="{{ url_for('foro') }}" class="{% if request.endpoint == 'forum' %}active{% endif %} item">
+            <i class="comments icon"></i> Foro
+        </a>
+        {% if current_user.is_authenticated %}
+        <div class="right menu">
+            <div class="ui dropdown item">
+                <i class="bars icon"></i><i class="dropdown icon"></i>
+                <div class="menu">
+                    <a href="{{ url_for('dashboard') }}" class="{% if request.endpoint == 'dashboard' %}active{% endif %} item">
+                        <i class="chart line icon"></i> Dashboard
+                    </a>
+                    <a href="{{ url_for('logout') }}" class="item">
+                        <i class="sign-out icon"></i> Cerrar sesión
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="right menu">
+            <div class="ui dropdown item">
+                <i class="bars icon"></i><i class="dropdown icon"></i>
+                <div class="menu">
+                    <a href="{{ url_for('ruta_login') }}" class="item">
+                        <i class="sign-in icon"></i> Iniciar sesión
+                    </a>
+                    <a href="{{ url_for('ruta_newaccount') }}" class="item">
+                        <i class="user plus icon"></i> Registrarse
+                    </a>
+                </div>
+            </div>
+        </div>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+
+<script>
+    $('.ui.dropdown').dropdown();
+</script>
