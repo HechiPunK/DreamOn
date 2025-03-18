@@ -125,13 +125,6 @@ def agregar_significado():
             flash("Error al agregar el significado", "danger")
         return redirect(url_for('dashboard'))
 
-@app.route('/mis_significados')
-@login_required
-def mis_significados():
-    user_id = current_user.id
-    wordkeys = ModelWordKey.obtener_significados_por_usuario(db, user_id)
-    return render_template('dashboard.html', mis_significados=wordkeys)
-
 @app.route('/foro')
 def foro():
     publications = ModelPublication.get_publication(db)

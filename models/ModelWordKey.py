@@ -33,12 +33,12 @@ class ModelWordKey:
         try:
             cursor = db.connection.cursor()
             sql = """
-                SELECT keyword, jungian_date, modern_date 
+                SELECT keyword, jungian_date, modern_date, user_id 
                 FROM word_key
                 WHERE user_id = %s
             """
             cursor.execute(sql, (user_id,))
-            keyword = cursor.fetchall()
-            return [WordKey({"word": row[0], "jungian_date": row[1], "modern_date": row[2]} for row in keyword)]
+            significados = cursor.fetchall()
+            return [{"word": row[0], "jungian_date": row[1], "modern_date": row[2]} for row in significados]
         except Exception as ex:
             raise Exception(ex)

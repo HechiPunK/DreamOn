@@ -6,9 +6,6 @@
         <button class="ui primary button" id="abrir-modal-agregar">
             <i class="plus icon"></i> Agregar
         </button>
-        <button class="ui button" id="abrir-modal-mis-significados">
-            <i class="list icon"></i> Mis significados
-        </button>
     </div>
     <div class="ui segment" style="margin-top: 20px;">
         <h2 class="ui header">Mis Publicaciones</h2>
@@ -88,27 +85,4 @@
     </div>
 </div>
 
-<!-- Modal para ver mis significados -->
-<div class="ui modal" id="modal-mis-significados">
-    <div class="header">Mis Significados</div>
-    <div class="content">
-        <div class="ui divided items">
-            {% for WordKey in mis_significados %}
-            <div class="item">
-                <div class="content">
-                    <div class="header">{{ WordKey.keyword }}</div>
-                    <div class="description">
-                        <p><strong>Jungian:</strong> {{ WordKey.jungian_date }}</p>
-                        <p><strong>Moderno:</strong> {{ WordKey.modern_date }}</p>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-    <div class="actions">
-        <button type="button" class="ui button cancel">Cerrar</button>
-    </div>
-</div>
 {% endblock %}
-

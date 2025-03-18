@@ -124,16 +124,6 @@ document.getElementById('abrir-modal-agregar').addEventListener('click', functio
     $('#modal-agregar').modal('show');
 });
 
-// Abrir el modal para ver mis significados
-document.getElementById('abrir-modal-mis-significados').addEventListener('click', function () {
-    fetch("{{ url_for('mis_significados') }}")
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('modal-mis-significados').innerHTML = data;
-            $('#modal-mis-significados').modal('show');
-        });
-});
-
 // Cerrar modales al hacer clic en "Cancelar" o "Cerrar"
 document.querySelectorAll('.ui.modal .cancel').forEach(button => {
     button.addEventListener('click', function () {
